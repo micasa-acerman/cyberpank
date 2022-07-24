@@ -24,7 +24,8 @@ const Quiz: FC<Props> = ({ quiz }) => {
   const [timer, setTimer] = useState(0)
   const question = quiz.questions[questionIndex]
   const maxScore = getMaxScore(quiz)
-  const isPassed = score >= maxScore
+  const isPassed = score >= quiz.passingScore
+  console.log(isPassed, maxScore, score)
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,8 +69,9 @@ const Quiz: FC<Props> = ({ quiz }) => {
   }
 
   const handleSelect = (_opt: string, idx: number) => {
+    console.log(question.answer, idx)
     if (question.answer === idx) {
-      setScore(question.point ?? 1)
+      setScore(score + (question.point ?? 1))
     }
     if (quiz.questions.length - 1 !== questionIndex) setQuestionIndex(questionIndex + 1)
     else {
