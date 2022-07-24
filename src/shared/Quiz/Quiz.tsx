@@ -17,11 +17,6 @@ const START_QUIZ = -1
 const END_QUIZ = -2
 const END_TIMEOUT = -3
 
-const InfoBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
 const getMaxScore = (quiz: IQuiz) => quiz.questions.reduce((p, c) => p + (c.point ?? 1), 0)
 
 const Quiz: FC<Props> = ({ quiz }) => {
