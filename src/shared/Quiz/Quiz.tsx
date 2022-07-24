@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { IQuiz } from '../../models/Quiz'
 import { Button } from '../kit/Button'
 import { HorizontalLayout, Spacing, VerticalLayout } from '../kit/Layout'
