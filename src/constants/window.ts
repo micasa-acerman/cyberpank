@@ -1,0 +1,1 @@
+export const WINDOW_CONSTRAINS_MIN: [number, number] = [300, 300]
