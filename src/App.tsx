@@ -7,28 +7,28 @@ import Window from './shared/kit/Window'
 import Folder from './images/folder.png'
 import styled from 'styled-components'
 import Button from './shared/kit/Button/Button'
+import Quiz from './shared/Quiz/Quiz'
+import TestQA from './data/qa.json'
+import TestJS from './data/js.json'
 
 const APPS: Application[] = [
   {
     icon: Folder,
-    render: (application: Application) => (
-      <Window key={application.name}>
-        <Image
-          type='duotone-rb'
-          image='https://best-mother.ru/articles/wp-content/uploads/2021/02/skolko-zhivut-loshadi.jpg'
-        />
-        <H1>Good horses</H1>
-        <Text>
-          Good horses. Your footprints are powdered The saddles fell asleep in the dust. Where are
-          you, good horses, With manes right down to the ground? In what lands do you roam With
-          marvelous longing in the hearts? Do you sleep in warm stalls? Or in the cold steppes?
-          Whose hands do you trust The tenderness of velor lips? .. Good horses, you know The world
-          without you is boring and rough. Maybe in the edges of those unseen Will you eat oats? ..
-          In earthly herbs, malachite Your voices live.
-        </Text>
+    render: (application: Application, close) => (
+      <Window key={application.name} title={TestQA.name} onClickExit={close}>
+        <Quiz quiz={TestQA}></Quiz>
       </Window>
     ),
-    name: 'Good Hourses',
+    name: 'Quiz',
+  },
+  {
+    icon: Folder,
+    render: (application: Application, close) => (
+      <Window key={application.name} title={TestJS.name} onClickExit={close}>
+        <Quiz quiz={TestJS}></Quiz>
+      </Window>
+    ),
+    name: 'JS Test',
   },
   {
     icon: Folder,

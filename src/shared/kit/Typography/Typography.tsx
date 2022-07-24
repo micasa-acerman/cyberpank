@@ -20,7 +20,7 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
   font-family: 'IBM Plex Mono';
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.2em;
   margin: 0;
   padding: 0;

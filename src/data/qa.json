@@ -1,0 +1,20 @@
+{
+    "questions": [
+        {
+            "title": "Как тебя зовут?",
+            "options": [
+                "Костя",
+                "Рудик",
+                "Бобик",
+                "Дуди"
+            ],
+            "answer": 0,
+            "point": 1
+        }
+    ],
+    "author": "Constantino Struchini",
+    "passingScore": 1,
+    "createdDate": "13/08/1998",
+    "timer": 600,
+    "name": "QA Testing"
+}
