@@ -44,7 +44,9 @@ const Quiz: FC<Props> = ({ quiz }) => {
         const doc = new jsPDF('landscape', 'cm')
         const el = document.createElement('div')
         document.body.append(el)
-        el.innerHTML = data.replace('FIO!@!#!$!$!$!!2532as', prompt('Как твое поганяло?') ?? 'Член')
+        el.innerHTML = data
+          .replace('FIO!@!#!$!$!$!!2532as', prompt('Как твое поганяло?') ?? 'Член')
+          .replace('DA$!TA', new Date().toDateString())
         const svg = el.getElementsByTagName('svg')[0]
 
         setTimeout(
