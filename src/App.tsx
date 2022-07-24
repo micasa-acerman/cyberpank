@@ -94,8 +94,8 @@ const APPS: Application[] = [
     render: (application, close) => (
       <Window key={application.name} title='Россия победит!' onClickExit={close}>
         <Image
-          type='duotone-br'
-          image='https://sun9-34.userapi.com/impg/Pwl511gQhH8EAmNmyJ-ltgWoT10AiR0VPLjLxw/kPgWmMZySyA.jpg?size=957x1097&quality=96&sign=f803fc16911efce264525b4ebb4d554b&type=album'
+          type='duotone-rb'
+          image='https://rusatribut.ru/files/products/flag-so-stalinim-nashe-delo-pravoe-pobeda-budet-za-nami.401x401.jpg?0fecc76408a409f7ffade8360ba0bb95нф'
         />
         <H1>Pobeda budet za nami</H1>
         <Button variant='primary' onClick={() => alert('Красава!')}>
