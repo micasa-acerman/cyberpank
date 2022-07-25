@@ -2,12 +2,12 @@
   "questions": [
     {
       "options": ["<scripting>", "<script>", "<javascript>", "<js>"],
-      "title": "Inside which HTML element do we put the JavaScript?",
+      "title": "Внутри какого HTML-элемента мы помещаем JavaScript?",
       "answer": 1,
       "point": 1
     },
     {
-      "title": "What is the correct JavaScript syntax to change the content of the HTML element below?<p id=\"demo\">This is a demonstration.</p>",
+      "title": "Каков правильный синтаксис JavaScript для изменения содержимого элемента HTML ниже?<p id=\"demo\">Это демонстрация.</p>",
       "options": [
         "document.getElementById(\"demo\").innerHTML = \"Hello World!\";",
         "#demo.innerHTML = \"Hello World!\";",
@@ -18,17 +18,17 @@
       "point": 1
     },
     {
-      "title": "Where is the correct place to insert a JavaScript?",
+      "title": "Где корректное место для вставки JavaScript?",
       "options": [
-        "The <body> section",
-        "Both the <head> section and the <body> section are correct",
-        "The <head> section"
+        "В <body> секции",
+        "Как в разделе <head>, так и разделе <body>",
+        "Раздел <head>"
       ],
       "answer": 0,
       "point": 1
     },
     {
-      "title": "",
+      "title": "Укажите корректную запись",
       "options": [
         "<script src=\"xxx.js\">",
         "<script href=\"xxx.js\">",
@@ -38,7 +38,7 @@
       "point": 1
     },
     {
-      "title": "How do you write 'Hello World' in an alert box?",
+      "title": "Как вы пишете 'Hello world' в окне оповещения?",
       "options": [
         "msgBox(\"Hello World\");",
         "alertBox(\"Hello World\");",
@@ -49,19 +49,19 @@
       "point": 1
     },
     {
-      "title": "How do you create a function in JavaScript?",
+      "title": "Как создать функцию в JavaScript?",
       "options": ["function = myFuncName()", "function:myFuncName()", "function myFuncName()"],
       "answer": 2,
       "point": 1
     },
     {
-      "title": "How do you call a function named \"myFuncName\"?",
+      "title": "Как вы вызываете функцию с именем \"myFuncName\"?",
       "options": ["myFuncName()", "call function myFuncName()", "call myFuncName()"],
       "answer": 0,
       "point": 1
     },
     {
-      "title": "How to write an IF statement in JavaScript?",
+      "title": "Как написать оператор IF в JavaScript?",
       "options": ["if i = 5 then", "if i = 5", "if i == 5 then", "if (i == 5)"],
       "answer": 3,
       "point": 1

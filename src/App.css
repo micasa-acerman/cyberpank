@@ -1,6 +1,8 @@
 .App {
   text-align: center;
-  background-color: 	#bd00ff;
+  background: url('../public/background.gif');
+  background-color: #bd00ff;
+  background-size: cover;
   height: 100vh;
 }
 

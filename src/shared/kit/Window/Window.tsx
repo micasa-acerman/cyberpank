@@ -11,6 +11,10 @@ import { WINDOW_CONSTRAINS_MIN } from '../../../constants/window'
 type WindowProps = {
   children: React.ReactNode
   title?: string
+  defaultSize?: {
+    width: number
+    height: number
+  }
 }
 
 type WindowWrapperProps = {
@@ -55,10 +59,11 @@ const WindowBody = styled.div`
 export const Window: React.FC<WindowProps & WindowActionsProps> = ({
   children,
   title = 'Title',
+  defaultSize,
   ...headerProps
 }) => {
   const windowRef = useRef<HTMLDivElement>(null)
-  const [size, setSize] = useState({ width: 300, height: 300 })
+  const [size, setSize] = useState(defaultSize ?? { width: 300, height: 300 })
   const [position, setPosition] = useState({ x: 300, y: 300 })
   const [{ deltaX, deltaY }, setDelta] = useState({ deltaX: 0, deltaY: 0 })
   return (

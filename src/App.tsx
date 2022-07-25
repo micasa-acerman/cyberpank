@@ -11,11 +11,19 @@ const APPS: Application[] = [
   {
     icon: Folder,
     render: (application: Application, close) => (
-      <Window key={application.name} title={TestJS.name} onClickExit={close}>
+      <Window
+        key={application.name}
+        defaultSize={{
+          width: 600,
+          height: 600,
+        }}
+        title={TestJS.name}
+        onClickExit={close}
+      >
         <Quiz quiz={TestJS}></Quiz>
       </Window>
     ),
-    name: 'JS Test',
+    name: 'Тест JS',
   },
 ]
 
