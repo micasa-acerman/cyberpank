@@ -3,6 +3,7 @@ import Window from '../shared/kit/Window'
 import Quiz from '../shared/Quiz/Quiz'
 import Folder from '../images/folder.png'
 import TestJS from '../data/js.json'
+import SettingWidget from '../components/Settings'
 
 export const APPS: IStartProcess[] = [
   {
@@ -21,6 +22,23 @@ export const APPS: IStartProcess[] = [
       </Window>
     ),
     name: 'Тест JS',
+  },
+  {
+    icon: Folder,
+    render: (application: IProcess, close) => (
+      <Window
+        key={application.name}
+        defaultSize={{
+          width: 600,
+          height: 600,
+        }}
+        title={'Настройки'}
+        onClickExit={close}
+      >
+        <SettingWidget application={application} close={close} />
+      </Window>
+    ),
+    name: 'Настройки',
   },
   {
     icon: Folder,

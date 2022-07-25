@@ -3,19 +3,26 @@ import { LoginScreen } from './shared/LoginScreen'
 import Explorer from './shared/Explorer'
 import { APPS } from './constants/applications'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
+import { selectSystemInfo } from './store/system/systemSlice'
 
-const AppWrapper = styled.div`
+type AppWrapperProps = {
+  background: string
+}
+
+const AppWrapper = styled.div<AppWrapperProps>`
   text-align: center;
-  background: url('https://i.gifer.com/ZIb4.gif');
+  background: url(${(props) => props.background});
   background-color: #bd00ff;
   background-size: cover;
   height: 100vh;
 `
 
 function App() {
+  const info = useSelector(selectSystemInfo)
   return (
     <LoginScreen>
-      <AppWrapper>
+      <AppWrapper background={info.background}>
         <Desktop applications={APPS} />
         <Explorer />
       </AppWrapper>
