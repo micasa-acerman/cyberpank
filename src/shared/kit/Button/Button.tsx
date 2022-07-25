@@ -1,5 +1,7 @@
+import { FC } from 'react'
 import styled from 'styled-components'
 import { baseTheme } from '../../../constants/theme'
+import { useAudioContext } from '../../../context/AudioContext'
 
 type ButtonProps = {
   variant: 'primary' | 'secondary'
@@ -17,5 +19,24 @@ const Button = styled.button<ButtonProps>`
     box-shadow: 4px 4px 0px #000a;
   }
 `
+export type ButtonComponentProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
-export default Button
+const ButtonComponent: FC<ButtonComponentProps & ButtonProps> = ({
+  onClick,
+  variant,
+  ...props
+}) => {
+  const ctx = useAudioContext()
+  return (
+    <Button
+      variant={variant}
+      {...props}
+      onClick={(e) => {
+        onClick && onClick(e)
+        ctx.playAudio('/click.mp3')
+      }}
+    ></Button>
+  )
+}
+
+export default ButtonComponent

@@ -6,6 +6,7 @@ import Folder from './images/folder.png'
 import styled from 'styled-components'
 import Quiz from './shared/Quiz/Quiz'
 import TestJS from './data/js.json'
+import { AudioManager } from './shared/AudioManager'
 
 const APPS: Application[] = [
   {
@@ -39,14 +40,16 @@ function App() {
   const [windows, setWindows] = useState<Application[]>([])
   console.log(windows)
   return (
-    <div className='App' style={{ position: 'relative' }}>
-      <Desktop applications={APPS} onClick={(app) => setWindows([...windows, app])} />
-      <WindowSpace>
-        {windows.map((wnd) =>
-          wnd.render(wnd, () => setWindows(windows.filter((w) => w.name !== wnd.name))),
-        )}
-      </WindowSpace>
-    </div>
+    <AudioManager>
+      <div className='App' style={{ position: 'relative' }}>
+        <Desktop applications={APPS} onClick={(app) => setWindows([...windows, app])} />
+        <WindowSpace>
+          {windows.map((wnd) =>
+            wnd.render(wnd, () => setWindows(windows.filter((w) => w.name !== wnd.name))),
+          )}
+        </WindowSpace>
+      </div>
+    </AudioManager>
   )
 }
 
