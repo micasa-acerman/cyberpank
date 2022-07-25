@@ -6,6 +6,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { createGlobalStyle } from 'styled-components'
 import { normalize } from 'react-style-reset/string'
+import { AudioManager } from './shared/AudioManager'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 const GlobalStyles = createGlobalStyle`
@@ -14,7 +15,9 @@ const GlobalStyles = createGlobalStyle`
 root.render(
   <React.StrictMode>
     <GlobalStyles />
-    <App />
+    <AudioManager>
+      <App />
+    </AudioManager>
   </React.StrictMode>,
 )
 
