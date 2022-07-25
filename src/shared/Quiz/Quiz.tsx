@@ -5,8 +5,7 @@ import { HorizontalLayout, Spacing, VerticalLayout } from '../kit/Layout'
 import { H2 } from '../kit/Typography'
 import { Question } from './Question'
 import Cert from '../../images/cert.svg'
-import 'svg2pdf.js'
-import jsPDF from 'jspdf'
+import { toPng } from 'html-to-image'
 
 type Props = {
   quiz: IQuiz
@@ -41,27 +40,19 @@ const Quiz: FC<Props> = ({ quiz }) => {
     fetch(Cert)
       .then((data) => data.text())
       .then((data) => {
-        const doc = new jsPDF('landscape', 'cm')
         const el = document.createElement('div')
         document.body.append(el)
         el.innerHTML = data
           .replace('FIO!@!#!$!$!$!!2532as', prompt('Как твое поганяло?') ?? 'Член')
           .replace('DA$!TA', new Date().toDateString())
-        const svg = el.getElementsByTagName('svg')[0]
-
-        setTimeout(
-          () =>
-            doc
-              .svg(svg, {
-                x: 0,
-                y: 0,
-                width: 29.7,
-                height: 21,
-              })
-              .then(() => doc.save('Снюс.pdf'))
-              .catch(() => console.log('problem')),
-          1000,
-        )
+        toPng(el).then((dataUrl) => {
+          const link = document.createElement('a')
+          link.download = 'сертификат.jpeg'
+          link.href = dataUrl
+          link.click()
+          link.remove()
+          el.remove()
+        })
       })
   }
   const handleStart = () => {
