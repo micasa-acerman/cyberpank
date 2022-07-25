@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals'
 import { createGlobalStyle } from 'styled-components'
 import { normalize } from 'react-style-reset/string'
 import { AudioManager } from './shared/AudioManager'
+import { Provider } from 'react-redux'
+import store from './store'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 const GlobalStyles = createGlobalStyle`
@@ -15,9 +17,11 @@ const GlobalStyles = createGlobalStyle`
 root.render(
   <React.StrictMode>
     <GlobalStyles />
-    <AudioManager>
-      <App />
-    </AudioManager>
+    <Provider store={store}>
+      <AudioManager>
+        <App />
+      </AudioManager>
+    </Provider>
   </React.StrictMode>,
 )
 

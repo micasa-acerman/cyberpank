@@ -1,17 +1,13 @@
-import React, { FC, ReactElement } from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
 import { baseTheme } from '../../constants/theme'
+import { IStartProcess } from '../../models/Process'
+import { useAppDispatch } from '../../store'
+import { addProcess } from '../../store/process/processSlice'
 import { Text } from '../kit/Typography'
 
-export type Application = {
-  name: string
-  icon: string
-  render: (application: Application, close: () => void) => ReactElement
-}
-
 type Props = {
-  applications: Application[]
-  onClick: (application: Application) => void
+  applications: IStartProcess[]
 }
 
 const DesktopWrapper = styled.ul`
@@ -30,7 +26,7 @@ const AppWrapper = styled.li`
   cursor: pointer;
   box-sizing: border-box;
   :checked {
-    border: 1px double ${baseTheme.colors.white}
+    border: 1px double ${baseTheme.colors.white};
   }
 `
 const AppIcon = styled.img`
@@ -39,7 +35,7 @@ const AppIcon = styled.img`
 `
 
 type AppProps = {
-  application: Application
+  application: IStartProcess
   onClick(): void
 }
 
@@ -52,11 +48,15 @@ const App: FC<AppProps> = ({ application, onClick }) => {
   )
 }
 
-export const Desktop: FC<Props> = ({ applications, onClick }) => {
+export const Desktop: FC<Props> = ({ applications }) => {
+  const dispatch = useAppDispatch()
+  const handleClick = (processInfo: IStartProcess) => {
+    dispatch(addProcess(processInfo))
+  }
   return (
     <DesktopWrapper>
       {applications.map((app) => (
-        <App key={app.name} application={app} onClick={() => onClick(app)} />
+        <App key={app.name} application={app} onClick={() => handleClick(app)} />
       ))}
     </DesktopWrapper>
   )

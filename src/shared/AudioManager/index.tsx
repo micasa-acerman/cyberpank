@@ -1,5 +1,5 @@
 import { FC, ReactElement, useState } from 'react'
-import { AudioContext } from '../../context/AudioContext'
+import { SoundContext } from '../../context/SoundContext'
 
 type AudioType = {
   url: string
@@ -22,6 +22,6 @@ export const AudioManager: FC<{ children: ReactElement }> = ({ children }) => {
     item.el.play()
   }
   return (
-    <AudioContext.Provider value={{ playAudio: handlePlayAudio }}>{children}</AudioContext.Provider>
+    <SoundContext.Provider value={{ playAudio: handlePlayAudio }}>{children}</SoundContext.Provider>
   )
 }

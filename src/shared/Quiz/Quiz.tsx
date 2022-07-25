@@ -6,6 +6,8 @@ import { H2 } from '../kit/Typography'
 import { Question } from './Question'
 import Cert from '../../images/cert.svg'
 import { toPng } from 'html-to-image'
+import { useSelector } from 'react-redux'
+import { selectUserInfo } from '../../store/user/userSlice'
 
 type Props = {
   quiz: IQuiz
@@ -24,7 +26,7 @@ const Quiz: FC<Props> = ({ quiz }) => {
   const question = quiz.questions[questionIndex]
   const maxScore = getMaxScore(quiz)
   const isPassed = score >= quiz.passingScore
-  console.log(isPassed, maxScore, score)
+  const userInfo = useSelector(selectUserInfo)
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,24 +38,21 @@ const Quiz: FC<Props> = ({ quiz }) => {
     }, 1000)
   }, [timer])
 
-  const handleDownloadCert = () => {
-    fetch(Cert)
-      .then((data) => data.text())
-      .then((data) => {
-        const el = document.createElement('div')
-        document.body.append(el)
-        el.innerHTML = data
-          .replace('FIO!@!#!$!$!$!!2532as', prompt('Как твое поганяло?') ?? 'Член')
-          .replace('DA$!TA', new Date().toDateString())
-        toPng(el).then((dataUrl) => {
-          const link = document.createElement('a')
-          link.download = 'сертификат.jpeg'
-          link.href = dataUrl
-          link.click()
-          link.remove()
-          el.remove()
-        })
-      })
+  const handleDownloadCert = async () => {
+    const response = await fetch(Cert)
+    const text = await response.text()
+    const el = document.createElement('div')
+    document.body.append(el)
+    el.innerHTML = text
+      .replace('FIO!@!#!$!$!$!!2532as', userInfo.userName ?? '')
+      .replace('DA$!TA', new Date().toDateString())
+    const dataUrl = await toPng(el)
+    const link = document.createElement('a')
+    link.download = 'сертификат.jpeg'
+    link.href = dataUrl
+    link.click()
+    link.remove()
+    el.remove()
   }
   const handleStart = () => {
     setTimer(quiz.timer)

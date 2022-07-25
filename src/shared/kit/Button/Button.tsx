@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 import { baseTheme } from '../../../constants/theme'
-import { useAudioContext } from '../../../context/AudioContext'
+import { useSoundContext } from '../../../context/SoundContext'
 
 type ButtonProps = {
   variant: 'primary' | 'secondary'
@@ -26,7 +26,7 @@ const ButtonComponent: FC<ButtonComponentProps & ButtonProps> = ({
   variant,
   ...props
 }) => {
-  const ctx = useAudioContext()
+  const ctx = useSoundContext()
   return (
     <Button
       variant={variant}

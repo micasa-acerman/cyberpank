@@ -1,14 +1,14 @@
 import { createContext, useContext } from 'react'
 
-type AudioContextProps = {
+type SoundContextProps = {
   playAudio(url: string): void
 }
 
-export const AudioContext = createContext<AudioContextProps>({
+export const SoundContext = createContext<SoundContextProps>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   playAudio: () => {},
 })
 
-export const useAudioContext = () => {
-  return useContext(AudioContext)
+export const useSoundContext = () => {
+  return useContext(SoundContext)
 }
