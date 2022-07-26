@@ -27,7 +27,13 @@ describe('Window component', () => {
     expect(screen.getByTestId('wrapper')).toHaveStyle({
       width: '100px',
       height: '100px',
-      position: 'absolute'
+      position: 'absolute',
     })
+  })
+
+  it('should render JSX in body successfully', () => {
+    const component = <p>Hello world</p>
+    render(<Window title='Title'>{component}</Window>)
+    expect(screen.getByText('Hello world')).toBeInTheDocument()
   })
 })
