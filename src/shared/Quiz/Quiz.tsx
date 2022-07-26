@@ -2,12 +2,13 @@ import React, { FC, useEffect, useState } from 'react'
 import { IQuiz } from '../../models/Quiz'
 import { Button } from '../kit/Button'
 import { HorizontalLayout, Spacing, VerticalLayout } from '../kit/Layout'
-import { H2 } from '../kit/Typography'
+import { H2, H3, Text } from '../kit/Typography'
 import { Question } from './Question'
-import Cert from '../../images/cert.svg'
+import Cert from '../../assets/images/cert.svg'
 import { toPng } from 'html-to-image'
 import { useSelector } from 'react-redux'
 import { selectUserInfo } from '../../store/user/userSlice'
+import MarkdownIt from 'markdown-it'
 
 type Props = {
   quiz: IQuiz
@@ -16,6 +17,8 @@ type Props = {
 const START_QUIZ = -1
 const END_QUIZ = -2
 const END_TIMEOUT = -3
+
+const markdown = new MarkdownIt()
 
 const getMaxScore = (quiz: IQuiz) => quiz.questions.reduce((p, c) => p + (c.point ?? 1), 0)
 
@@ -73,16 +76,18 @@ const Quiz: FC<Props> = ({ quiz }) => {
 
   if (questionIndex === START_QUIZ)
     return (
-      <>
+      <VerticalLayout spacing={Spacing.m}>
+        <H3>{quiz.name}</H3>
+        <Text>{markdown.render(quiz.description)}</Text>
         <Button variant='primary' onClick={handleStart}>
           Старт тестирования
         </Button>
-      </>
+      </VerticalLayout>
     )
   if (questionIndex === END_QUIZ) {
     return (
       <VerticalLayout spacing={Spacing.s}>
-        <H2>{isPassed ? 'Ну ты гиг!' : 'Тест не пройден'}</H2>
+        <H2>{isPassed ? 'Ну ты Равиль!' : 'Тест не пройден'}</H2>
         <HorizontalLayout>
           Баллов набрано: {score} / {maxScore}
         </HorizontalLayout>

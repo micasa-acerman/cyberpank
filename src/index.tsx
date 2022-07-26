@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './fonts/ibmplexmono.css'
+import './assets/fonts/ibmplexmono.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { createGlobalStyle } from 'styled-components'

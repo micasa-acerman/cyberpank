@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { IProcess } from '../../models/Process'
 import { Button } from '../../shared/kit/Button'
 import { Spacing, VerticalLayout } from '../../shared/kit/Layout'
-import TextField from "../../shared/kit/TextField"
+import TextField from '../../shared/kit/TextField'
 import { Text } from '../../shared/kit/Typography'
 import { useAppDispatch } from '../../store'
 import { resetBackground, selectSystemInfo, setBackground } from '../../store/system/systemSlice'

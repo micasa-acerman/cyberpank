@@ -7,4 +7,5 @@ export interface IQuiz {
     createdDate: string
     timer: number
     name: string
+    description: string
 }

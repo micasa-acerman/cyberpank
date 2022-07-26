@@ -1,8 +1,8 @@
 import { IStartProcess, IProcess } from '../models/Process'
 import Window from '../shared/kit/Window'
 import Quiz from '../shared/Quiz/Quiz'
-import Folder from '../images/folder.png'
-import TestJS from '../data/js.json'
+import Folder from '../assets/images/folder.png'
+import { JS_TEST } from '../assets/data/js'
 import SettingWidget from '../components/Settings'
 
 export const APPS: IStartProcess[] = [
@@ -15,10 +15,10 @@ export const APPS: IStartProcess[] = [
           width: 600,
           height: 600,
         }}
-        title={TestJS.name}
+        title={JS_TEST.name}
         onClickExit={close}
       >
-        <Quiz quiz={TestJS}></Quiz>
+        <Quiz quiz={JS_TEST}></Quiz>
       </Window>
     ),
     name: 'Тест JS',
