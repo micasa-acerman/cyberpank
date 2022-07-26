@@ -82,7 +82,7 @@ export const Window: React.FC<WindowProps & WindowActionsProps> = ({
         resizeHandles={['e', 's']}
         handle={(handleAxis, ref) => <div ref={ref} className={`wnd-handle-${handleAxis}`}></div>}
       >
-        <WindowWrapper ref={windowRef} {...position} {...size}>
+        <WindowWrapper data-testid="wrapper" ref={windowRef} {...position} {...size}>
           <WindowHeader className='wnd-header'>
             <WindowActions {...headerProps}></WindowActions>
             <WindowTitle>{title}</WindowTitle>
