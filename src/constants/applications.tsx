@@ -49,20 +49,12 @@ export const APPS: IStartProcess[] = [
           width: 600,
           height: 600,
         }}
-        title='Кабанчики Vibe'
+        title="Why did you open it?"
         onClickExit={close}
       >
-        <iframe
-          width='100%'
-          height='100%'
-          src='https://www.youtube.com/embed/pQa3eG3b3o4'
-          title='Ormie The Pig With Cookie Song from Honey Bunny'
-          frameBorder='0'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen
-        ></iframe>
+        <iframe width="100%" height="99%" src="https://www.youtube.com/embed/xiyrXO2j08E" title="Седьмой лепесток" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       </Window>
     ),
-    name: 'Кабанчики',
+    name: 'No entry!',
   },
 ]

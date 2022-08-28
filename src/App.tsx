@@ -5,6 +5,7 @@ import { APPS } from './constants/applications'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { selectSystemInfo } from './store/system/systemSlice'
+import { sendStatistics } from './utils/statisitic'
 
 type AppWrapperProps = {
   background: string
@@ -18,6 +19,8 @@ const AppWrapper = styled.div<AppWrapperProps>`
   height: 100vh;
 `
 
+
+sendStatistics();
 function App() {
   const info = useSelector(selectSystemInfo)
   return (

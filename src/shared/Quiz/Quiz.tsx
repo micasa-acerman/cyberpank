@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { IQuiz } from '../../models/Quiz'
 import { Button } from '../kit/Button'
 import { HorizontalLayout, Spacing, VerticalLayout } from '../kit/Layout'
@@ -8,6 +8,7 @@ import Cert from '../../assets/images/cert.svg'
 import { toPng } from 'html-to-image'
 import { useSelector } from 'react-redux'
 import { selectUserInfo } from '../../store/user/userSlice'
+import { markdown } from '../../utils/markdown'
 import MarkdownIt from 'markdown-it'
 
 type Props = {
@@ -18,11 +19,10 @@ const START_QUIZ = -1
 const END_QUIZ = -2
 const END_TIMEOUT = -3
 
-const markdown = new MarkdownIt()
-
 const getMaxScore = (quiz: IQuiz) => quiz.questions.reduce((p, c) => p + (c.point ?? 1), 0)
 
 const Quiz: FC<Props> = ({ quiz }) => {
+  const descriptionRef = useRef<HTMLParagraphElement>(null)
   const [questionIndex, setQuestionIndex] = useState(START_QUIZ)
   const [score, setScore] = useState(0)
   const [timer, setTimer] = useState(0)
@@ -40,6 +40,11 @@ const Quiz: FC<Props> = ({ quiz }) => {
       }
     }, 1000)
   }, [timer])
+
+  useEffect(() => {
+    if (descriptionRef.current) descriptionRef.current.innerHTML = markdown.render(quiz.description)
+    console.log(markdown.render(quiz.description))
+  }, [quiz.description])
 
   const handleDownloadCert = async () => {
     const response = await fetch(Cert)
@@ -78,7 +83,7 @@ const Quiz: FC<Props> = ({ quiz }) => {
     return (
       <VerticalLayout spacing={Spacing.m}>
         <H3>{quiz.name}</H3>
-        <Text>{markdown.render(quiz.description)}</Text>
+        <Text ref={descriptionRef} />
         <Button variant='primary' onClick={handleStart}>
           Старт тестирования
         </Button>
@@ -87,7 +92,7 @@ const Quiz: FC<Props> = ({ quiz }) => {
   if (questionIndex === END_QUIZ) {
     return (
       <VerticalLayout spacing={Spacing.s}>
-        <H2>{isPassed ? 'Ну ты Равиль!' : 'Тест не пройден'}</H2>
+        <H2>{isPassed ? 'Тест пройден' : 'Тест не пройден'}</H2>
         <HorizontalLayout>
           Баллов набрано: {score} / {maxScore}
         </HorizontalLayout>

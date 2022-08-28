@@ -13,6 +13,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/react-redux": "^7.1.24",
+    "firebase": "^9.9.3",
     "html-to-image": "^1.9.0",
     "jest-styled-components": "^7.0.8",
     "markdown-it": "^13.0.1",

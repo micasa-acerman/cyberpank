@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { IQuestion } from '../../models/Question'
+import { markdown } from '../../utils/markdown'
 import { Button } from '../kit/Button'
 import { H3 } from '../kit/Typography'
 
@@ -18,9 +19,17 @@ const OptionList = styled.ul`
 `
 
 export const Question: FC<Props> = ({ question, onSelect }) => {
+  const questionRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    if (questionRef.current) questionRef.current.innerHTML = markdown.render(question.title)
+  }, [question.title])
+
+
+
   return (
     <>
-      <H3>{question.title}</H3>
+      <H3 ref={questionRef} />
       <OptionList>
         {question.options.map((opt, idx) => (
           <Button variant='primary' key={opt} onClick={() => onSelect(opt, idx)}>

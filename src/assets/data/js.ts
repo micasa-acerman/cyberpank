@@ -7,15 +7,7 @@ export const JS_TEST: IQuiz = {
     timer: 600,
     name: 'Javascript Test',
     description: `Темы тестирования:
-    * Тестирование *,
-    Регулярные выражения,
-    Синтаксис javascript,
-    Асинхронные запросы,
-    Работа с dom,
-    Объекты в javascript,
-    Работа с массивами,
-    Ооп в javascript,
-    Общее`,
+    <ul style='list-style-position: inside;padding-left: 4px'><li>Тестирование</li><li>Регулярные выражения</li><li>Синтаксис javascript</li><li>Асинхронные запросы</li><li>Работа с dom</li><li>Объекты в javascript</li><li>Работа с массивами</li><li>ООП в javascript</li></ul>`,
     questions: [
         {
             options: [

@@ -17,6 +17,10 @@ const GlobalStyles = createGlobalStyle`
   padding: 0;
   font-family: 'IBM Plex Mono';
   }
+
+  code {
+    font-size: 12px;
+  }
 `
 root.render(
   <React.StrictMode>
