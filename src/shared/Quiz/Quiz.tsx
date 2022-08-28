@@ -9,7 +9,6 @@ import { toPng } from 'html-to-image'
 import { useSelector } from 'react-redux'
 import { selectUserInfo } from '../../store/user/userSlice'
 import { markdown } from '../../utils/markdown'
-import MarkdownIt from 'markdown-it'
 
 type Props = {
   quiz: IQuiz
