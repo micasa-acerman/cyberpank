@@ -7,6 +7,7 @@ import { selectUserInfo } from '../../store/user/userSlice'
 import { IMessage } from '../../models/Message'
 import moment from 'moment'
 import 'moment/locale/ru'
+import { useSoundContext } from '../../context/SoundContext'
 
 moment.locale('ru')
 
@@ -56,6 +57,7 @@ const MessageList = styled.ul`
     gap: 10px;
     padding: 12px;
     list-style: none;
+    grid-auto-rows: min-content;
 `
 const Message = styled.li<IMessageProps>`
     background: ${({ kind }) => kind == 'me' ? '#27ae60' : 'white'};
@@ -104,6 +106,7 @@ const Chat:FC<unknown> = () => {
     const [message, setText] = useState('')
     const [list, setList] = useState<IMessage[]>([])
     const userName = useSelector(selectUserInfo).userName
+    const audio = useSoundContext()
   
     useEffect(()=>{
         async function getData() {
@@ -113,13 +116,15 @@ const Chat:FC<unknown> = () => {
                 querySnapshot.forEach((doc) => {
                     data.push({id:doc.id, ...doc.data(), createdAt: new Date(doc.data().createdAt)} as IMessage)
                   });
-
+                if(list.length < data.length) 
+                    audio.playAudio('/papich-tratatata.mp3')
+            
                 setList(data.sort((a,b)=>a.createdAt.getTime()-b.createdAt.getTime()))
             } catch(e) {
                 console.error(e)
             }
         }
-        setInterval(getData, 1000)
+        setInterval(getData, 5000)
     },[])
 
 const handleClickSend = async () => {
@@ -132,6 +137,8 @@ const handleClickSend = async () => {
             });
             setText('')
             setList([...list, {id: new Date().toUTCString(), userName: userName, message, createdAt: new Date() }])
+            
+            audio.playAudio('/da-jeto-zhestko.mp3')
         }
     } catch (e) {
         console.error('Error adding document: ', e);

@@ -1,7 +1,9 @@
 import { createContext, useContext } from 'react'
 
+type AudioType = '/click.mp3' | '/da-jeto-zhestko.mp3' | '/papich-tratatata.mp3'
+
 type SoundContextProps = {
-  playAudio(url: string): void
+  playAudio(url: AudioType): void
 }
 
 export const SoundContext = createContext<SoundContextProps>({
