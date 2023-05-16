@@ -4,6 +4,7 @@ import Quiz from '../shared/Quiz/Quiz'
 import Folder from '../assets/images/folder.png'
 import { JS_TEST } from '../assets/data/js'
 import SettingWidget from '../components/Settings'
+import { Chat } from '../shared/Chat'
 
 export const APPS: IStartProcess[] = [
   {
@@ -57,4 +58,21 @@ export const APPS: IStartProcess[] = [
     ),
     name: 'No entry!',
   },
+  {
+    icon: Folder,
+    render: (application: IProcess, close) => (
+      <Window
+        key={application.name}
+        defaultSize={{
+          width: 600,
+          height: 600,
+        }}
+        title="Chat"
+        onClickExit={close}
+      >
+        <Chat />
+      </Window>
+    ),
+    name: 'Чат',
+  }
 ]
