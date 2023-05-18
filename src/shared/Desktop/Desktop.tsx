@@ -39,10 +39,11 @@ const AppIcon = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #ffe69d;
   border-radius: 10px;
   image-rendering: pixelated;
   margin-bottom: 4px;
+  border: 2px solid black;
 `
 
 type AppProps = {
@@ -53,7 +54,7 @@ type AppProps = {
 const App: FC<AppProps> = ({ application, onClick }) => {
   return (
     <AppWrapper onDoubleClick={onClick}>
-      {typeof application.icon === 'string' ? <AppIconCustom src={application.icon} /> : <AppIcon><application.icon enableBackground='black' size='24px' color='white' /></AppIcon>}
+      {typeof application.icon === 'string' ? <AppIconCustom src={application.icon} /> : <AppIcon><application.icon enableBackground='black' size='24px' color='black' /></AppIcon>}
       <Text align='center' noSelection>{application.name}</Text>
     </AppWrapper>
   )
