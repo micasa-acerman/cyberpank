@@ -107,25 +107,29 @@ const Chat:FC<unknown> = () => {
     const [list, setList] = useState<IMessage[]>([])
     const userName = useSelector(selectUserInfo).userName
     const audio = useSoundContext()
-  
-    useEffect(()=>{
-        async function getData() {
-            try{
-                const querySnapshot = await getDocs(collection(db, 'messages'))
-                const data:IMessage[] = []
-                querySnapshot.forEach((doc) => {
-                    data.push({id:doc.id, ...doc.data(), createdAt: new Date(doc.data().createdAt)} as IMessage)
-                  });
-                if(list.length < data.length) 
-                    audio.playAudio('/papich-tratatata.mp3')
-            
-                setList(data.sort((a,b)=>a.createdAt.getTime()-b.createdAt.getTime()))
-            } catch(e) {
-                console.error(e)
-            }
+    async function getData(playSound = true) {
+        try{
+            const querySnapshot = await getDocs(collection(db, 'messages'))
+            const data:IMessage[] = []
+            querySnapshot.forEach((doc) => {
+                data.push({id:doc.id, ...doc.data(), createdAt: new Date(doc.data().createdAt)} as IMessage)
+              });
+            console.log('test len', list.length, data.length)
+            if(list.length < data.length && playSound) 
+                audio.playAudio('/papich-tratatata.mp3')
+        
+            setList(data.sort((a,b)=>a.createdAt.getTime()-b.createdAt.getTime()))
+        } catch(e) {
+            console.error(e)
         }
-        setInterval(getData, 5000)
+    }
+    useEffect(()=>{
+        getData(false);
     },[])
+    useEffect(()=>{
+        const interval = setTimeout(getData, 5000)
+        return ()=>clearInterval(interval)
+    },[list])
 
 const handleClickSend = async () => {
     try {
