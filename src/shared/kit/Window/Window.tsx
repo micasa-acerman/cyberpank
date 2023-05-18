@@ -43,6 +43,7 @@ const WindowHeader = styled.div`
   align-items: center;
   position: relative;
   cursor: pointer;
+  user-select: none;
 `
 const WindowTitle = styled.h3`
   text-transform: uppercase;
