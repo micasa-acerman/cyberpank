@@ -114,7 +114,6 @@ const Chat:FC<unknown> = () => {
             querySnapshot.forEach((doc) => {
                 data.push({id:doc.id, ...doc.data(), createdAt: new Date(doc.data().createdAt)} as IMessage)
               });
-            console.log('test len', list.length, data.length)
             if(list.length < data.length && playSound) 
                 audio.playAudio('/papich-tratatata.mp3')
         
