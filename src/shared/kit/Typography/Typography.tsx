@@ -27,7 +27,8 @@ export const H3 = styled.h3`
 `
 
 type TextProps = {
-  align?: 'center' | 'left' | 'right' | 'justify'
+  align?: 'center' | 'left' | 'right' | 'justify';
+  noSelection?: boolean;
 }
 
 export const Text = styled.p<TextProps>`
@@ -37,4 +38,5 @@ export const Text = styled.p<TextProps>`
   line-height: 1em;
   text-align: left;
   text-align: ${(props) => props.align || 'left'};
+  user-select: ${({noSelection})=>noSelection?'none':'inherit'}
 `

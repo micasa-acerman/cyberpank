@@ -5,6 +5,8 @@ import Folder from '../assets/images/folder.png'
 import { JS_TEST } from '../assets/data/js'
 import SettingWidget from '../components/Settings'
 import { Chat } from '../shared/Chat'
+import { FaRocketchat, FaUserSecret } from 'react-icons/fa'
+
 
 export const APPS: IStartProcess[] = [
   {
@@ -42,7 +44,7 @@ export const APPS: IStartProcess[] = [
     name: 'Настройки',
   },
   {
-    icon: Folder,
+    icon: FaUserSecret,
     render: (application: IProcess, close) => (
       <Window
         key={application.name}
@@ -59,7 +61,7 @@ export const APPS: IStartProcess[] = [
     name: 'No entry!',
   },
   {
-    icon: Folder,
+    icon: FaRocketchat,
     render: (application: IProcess, close) => (
       <Window
         key={application.name}

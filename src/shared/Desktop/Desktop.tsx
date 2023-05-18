@@ -18,7 +18,6 @@ const DesktopWrapper = styled.ul`
 
 const AppWrapper = styled.li`
   width: 64px;
-  height: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,9 +28,21 @@ const AppWrapper = styled.li`
     border: 1px double ${baseTheme.colors.white};
   }
 `
-const AppIcon = styled.img`
+const AppIconCustom = styled.img`
   width: 48px;
   height: 48px;
+`
+
+const AppIcon = styled.span`
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border-radius: 10px;
+  image-rendering: pixelated;
+  margin-bottom: 4px;
 `
 
 type AppProps = {
@@ -42,8 +53,8 @@ type AppProps = {
 const App: FC<AppProps> = ({ application, onClick }) => {
   return (
     <AppWrapper onDoubleClick={onClick}>
-      <AppIcon src={application.icon} />
-      <Text align='center'>{application.name}</Text>
+      {typeof application.icon === 'string' ? <AppIconCustom src={application.icon} /> : <AppIcon><application.icon enableBackground='black' size='24px' color='white' /></AppIcon>}
+      <Text align='center' noSelection>{application.name}</Text>
     </AppWrapper>
   )
 }
